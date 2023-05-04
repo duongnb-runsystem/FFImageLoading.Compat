@@ -50,7 +50,6 @@ jobs:
         dotnet pack --output ./artifacts --configuration Release -p:PackageVersion=$VERSION ./source/FFImageLoading.Svg/FFImageLoading.Svg.csproj
         dotnet pack --output ./artifacts --configuration Release -p:PackageVersion=$VERSION ./source/FFImageLoading.Svg.Maui/FFImageLoading.Svg.Maui.csproj
         dotnet pack --output ./artifacts --configuration Release -p:PackageVersion=$VERSION ./source/FFImageLoading.Transformations/FFImageLoading.Transformations.csproj
-
         $pfxPath = Join-Path -Path $pwd -ChildPath "codesigncert.pfx"
         [IO.File]::WriteAllBytes("$pfxPath", [System.Convert]::FromBase64String($env:CODESIGN_PFX))
         nuget sign .\artifacts\*.nupkg -CertificatePath $pfxPath -Timestamper http://timestamp.entrust.net/TSS/RFC3161sha2TS
