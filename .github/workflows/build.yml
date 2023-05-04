@@ -1,10 +1,10 @@
 name: .NET Core
 
 on:
+  workflow_dispatch:
   pull_request:
-  push:
-  release:
-    types: [published]
+    branches:
+      - main
 
 jobs:
   build:
